@@ -1,0 +1,10 @@
+Command to get OS of system..
+	uname <--- this returns kernel ver
+		Darwin is OSX
+		Linux is CentOS, Debian, Fedora, Gentoo, Linux Mint, openSUSE, Red Hat, Ubuntu 
+		FreeBSD is FreeBSD
+		SunOS is Solaris
+
+get first MAC addr (en0 on MAC is the first ethernet port)
+	ifconfig -a | grep "ether" | head -1  <--- Mac, SunOS, FreeBSD command
+	ifconfig -a | grep "HWaddr| head -1   <--- Linux command
