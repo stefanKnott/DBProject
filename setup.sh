@@ -27,5 +27,14 @@ make sysMetrics
 #	Centos 6: IP address is listed eth0
 #	Centos 7: IP address is listed enp0s3
 	
-#	run ip addr >> match on eth0/enp0s3 >> match on inet <<IP ADDR>>
-#	run ./sysMetric <<IP ADDR>>
+#	Write program to run 'ip addr | grep <<ethLabel>> | awk '{print $2}' | tail -1 '
+#	pipe this into a program which does more formal regex matching to determine legitimate ip address
+
+
+#Get cpu usage -- this sums use from user and system, will be useful for data population program
+#top -d 0.5 -b -n2 | grep "Cpu(s)"|tail -n 1 | awk '{print $2 + $4}'
+
+#Get amount of "free" memory on machine in MB
+#free -m | grep '+.*buffers' | awk '{print $4}'
+
+
