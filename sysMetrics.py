@@ -1,5 +1,6 @@
 import subprocess
 import time
+import datetime
 import re
 
 def frMemCmd():
@@ -40,10 +41,14 @@ if __name__ == '__main__':
         dbUrl = "'http://localhost:8086/write?db=sysMetrics'"
 
         while True:
-                #memResp = call(frMemCmd) 
-                #call(["free", "-m" "|", "grep", "+*.buffers", "|", "awk", "{print $4}"])
                 memInfo = frMemCmd()
                 cpuInfo =  cpuUtCmd()
                 writeMem(memInfo)
                 writeCpu(cpuInfo)
-		sleep(5)
+		sleep(2)
+
+                deleteBy = datetime.datetime.now() + datetime.timedelta(days=-2)
+                if deleteBy > startTime:
+                        subprocess.call(["curl", "-G", "http://localhost:8086/query", "--data-urlencode", "q=drop database sysMetrics"])
+                        subprocess.call(["curl", "-G", "http://localhost:8086/query", "--data-urlencode", "q=create database sysMetrics"])
+
