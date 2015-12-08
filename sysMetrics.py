@@ -48,4 +48,4 @@ if __name__ == '__main__':
         cpuInfo =  cpuUtCmd()
         writeMem(memInfo)
         writeCpu(cpuInfo)
-		sleep(2)
+	sleep(2)
