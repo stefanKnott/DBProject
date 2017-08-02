@@ -32,10 +32,10 @@ def ioStatCmd():
         #return ioResp.group()
 
 def writeCpu(perc):
-    subprocess.call(["curl", "-i", "-XPOST", "http://localhost:8086/write?db=sysMetrics", "--data-binary", "cpuUse,host=denprdinf0017,region=denver cpuUse=" + perc])
+    subprocess.call(["curl", "-i", "-XPOST", "http://localhost:8086/write?db=sysMetrics", "--data-binary", "cpuUse,host=localhost,region=denver cpuUse=" + perc])
 
 def writeMem(mb):
-    subprocess.call(["curl", "-i", "-XPOST", "http://localhost:8086/write?db=sysMetrics", "--data-binary", "freeMem,host=denprdinf0017,region=denver freeMem=" + mb])
+    subprocess.call(["curl", "-i", "-XPOST", "http://localhost:8086/write?db=sysMetrics", "--data-binary", "freeMem,host=localhost,region=denver freeMem=" + mb])
 
 if __name__ == '__main__':
     dbUrl = "'http://localhost:8086/write?db=sysMetrics'"
